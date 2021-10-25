@@ -1,0 +1,12 @@
+[Unit]
+Description=Planner Telegram Bot
+
+[Service]
+User=ubuntu
+Type=simple
+WorkingDirectory=/ubuntu/venvshop_tgbot
+ExecStart=/ubuntu/PlannerBot/venv/bin/python3 bot/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
