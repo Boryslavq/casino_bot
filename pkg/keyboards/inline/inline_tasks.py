@@ -15,37 +15,27 @@ async def panel():
         InlineKeyboardButton(text="Разослать рассылку 🎬",
                              callback_data=admin_callback.new(name="panel", action="advertisement"))).add(
         InlineKeyboardButton(text="Отправить сообщение конкретному пользователю 💫",
-                             callback_data=admin_callback.new(name="panel", action="send"))
+                             callback_data=admin_callback.new(name="panel", action="send"))).add(
+        InlineKeyboardButton(text="Изменить текст /start 🎺",
+                             callback_data=admin_callback.new(name="panel", action="change"))
 
     )
     return kb
 
 
-async def show_info(key: str):
-    replies = {"dom": ["https://www.instagram.com/?hl=ru", "Text1"],
-               "match": ["https://www.instagram.com/?hl=ru", "Text2"],
-               "starts": ["https://www.instagram.com/?hl=ru", "Text3"],
-               "party": ["https://www.instagram.com/?hl=ru", "Text4"],
-               "gg": ["https://www.instagram.com/?hl=ru", "Text5"],
-               "888": ["https://www.instagram.com/?hl=ru", "Text6"],
-               "best": ["https://www.instagram.com/?hl=ru", "Text7"],
+async def show_info():
+    replies = {"POKERDOM": ["http://pokerdom.blefach.ru/", "POKERDOM"],
+               "POKERMATCH": ["http://pokermatch.blefach.ru/", "POKERMATCH"],
+               "POKERSTARS": ["http://pokerstars.blefach.ru/", "POKERSTARS"],
+               "PARTYPOKER": ["http://partypoker.blefach.ru/", "PARTYPOKER"],
+               "GGPOKEROK": ["http://pokerok.blefach.ru/", "GGPOKEROK"],
+               "888": ["http://888poker.blefach.ru/", "888"],
+               "GROMPOKER": ["https://www.grompokerru2.com/?btag=152538_l65181&AFFAGG=#?signup", "GROMPOKER"],
                }
     kb = InlineKeyboardMarkup()
-    kb.add(InlineKeyboardButton(text=replies[key][1], url=replies[key][0])).add(
-        InlineKeyboardButton(text="Назад", callback_data='back')
-    )
-    return kb
-
-
-async def menu() -> InlineKeyboardMarkup:
-    kb = InlineKeyboardMarkup()
-    kb.add(InlineKeyboardButton(text='PokerDom', callback_data=menu_callback.new(name='poker', outline='dom'))).add(
-        InlineKeyboardButton(text='PokerMatch', callback_data=menu_callback.new(name='poker', outline='match'))).add(
-        InlineKeyboardButton(text='PokerStars', callback_data=menu_callback.new(name='poker', outline='starts'))).add(
-        InlineKeyboardButton(text='PartyPoker', callback_data=menu_callback.new(name='poker', outline='party'))).add(
-        InlineKeyboardButton(text='GGpokerok', callback_data=menu_callback.new(name='poker', outline='gg'))).add(
-        InlineKeyboardButton(text='888Poker', callback_data=menu_callback.new(name='poker', outline='888'))).add(
-        InlineKeyboardButton(text='BestPoker', callback_data=menu_callback.new(name='poker', outline='best')))
+    for key in replies.keys():
+        kb.add(
+            InlineKeyboardButton(text=replies[key][1], url=replies[key][0]))
     return kb
 
 

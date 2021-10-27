@@ -10,7 +10,6 @@ db = Gino()
 
 class User(db.Model):
     __tablename__ = 'users'
-
     user_id = db.Column(db.Integer(), unique=True)
     username = db.Column(db.Unicode())
     fullname = db.Column(db.Unicode())

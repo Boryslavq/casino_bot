@@ -20,6 +20,7 @@ async def on_startup(dispatcher: Dispatcher):
 
     await database.on_startup(dp)
     await db.gino.create_all()
+    # await db.gino.drop_all()
 
 
 if __name__ == '__main__':

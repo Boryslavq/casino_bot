@@ -13,3 +13,7 @@ class AdminPanel(StatesGroup):
 class SendMsg(StatesGroup):
     id = State()
     msg = State()
+
+
+class ChangeText(StatesGroup):
+    text = State()

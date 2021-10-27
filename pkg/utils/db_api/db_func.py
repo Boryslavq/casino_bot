@@ -22,3 +22,6 @@ async def add_user(user_id: int, username: str, full_name: str):
     except UniqueViolationError:
         await User.update.values(username=username, fullname=full_name).where(
             'user_id' == user_id).gino.status()
+
+
+
